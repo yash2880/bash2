@@ -1,4 +1,4 @@
-#!/bin/bash
+!/bin/bash
 
 # Define the variable for docker-compose file
 DOCKER_COMPOSE_FILE=docker-compose.yml
@@ -71,7 +71,7 @@ services:
     ports:
       - "9093:9093"
       - "29093:29093"
-     environment:
+    environment:
       KAFKA_ADVERTISED_LISTENERS: INTERNAL://kafka2:19093,EXTERNAL://${DOCKER_HOST_IP:-$HOST_IP}:9093,DOCKER://host.docker.internal:29093
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INTERNAL:PLAINTEXT,EXTERNAL:PLAINTEXT,DOCKER:PLAINTEXT
       KAFKA_INTER_BROKER_LISTENER_NAME: INTERNAL
@@ -86,7 +86,7 @@ services:
       - zoo3
 
   kafka3:
-    image: confluentinc/cp-kafka:$KAFKA_VERSION
+    image: confluentinc/cp-kafka
     hostname: kafka3
     container_name: kafka3
     ports:
